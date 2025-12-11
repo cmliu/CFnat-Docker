@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# 监听端口设置，可通过环境变量 CFNAT_LISTEN_PORT 覆盖
+LISTEN_PORT="${CFNAT_LISTEN_PORT:-1234}"
+
 # 检测系统架构
 ARCH=$(uname -m)
 CFNAT_BINARY='./cfnat'
@@ -33,7 +36,7 @@ do
         -port="$port" \
         -delay="$delay" \
         -ips="$ips" \
-        -addr="0.0.0.0:1234" \
+        -addr="0.0.0.0:$LISTEN_PORT" \
         -ipnum="$ipnum" \
         -num="$num" \
         -random="$random" \
